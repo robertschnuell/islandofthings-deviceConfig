@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any">
+    <link rel="mask-icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="license" href="//creativecommons.org/licenses/by-nc-nd/4.0">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>island of things | config</title>
+
+    <script src="js/axios.min.js"></script>
+
+
+   <style>
+
+   </style>
+
+  </head>
+  <body>
+    <nav>
+      <h1> island of things</h1>
+      <h3> config</h3>
+    </nav>
+    
+
+    <main>
+
+      <h2>REGISTERED DEVICES</h2>
+      <section id="devices">
+        <article class="caption">
+          <div>DEV_ADD</div>
+          <div>NAME</div>
+          <div>PAYLOADS</div>
+        </article>
+        
+      </section>
+
+      <h2>NEW DEVICE</h2>
+      <section id="newDevice">
+            <div>
+              <label for="textinput1">DEV ADD</label>  
+              <input id="new_devadd" name="new_devadd" type="text" required maxlength="8" placeholder="00000000">         
+            </div>
+
+            <div>
+              <labelfor="textinput2">DEV EUI</label>  
+              <input id="new_deveui" name="new_deveui" maxlength="16" required type="text" placeholder="0000000000000000">
+            </div>
+
+            <div>
+              <labelfor="textinput2">APPSKEY</label>  
+              <input id="new_appskey" name="new_appskey" maxlength="32" required type="text" placeholder="00000000000000000000000000000000">
+            </div>
+
+            <div>
+              <labelfor="textinput2">NETSKEY</label>  
+              <input id="new_netskey" name="new_netskey" maxlength="32" required type="text" placeholder="00000000000000000000000000000000">
+            </div>
+
+
+            <div>
+              <label for="new_loglevel">Debug Loglevel</label> 
+              <select id="new_loglevel" name="new_loglevel" class="logLevel">
+                <option value="1">none</option>
+                <option value="2">low</option>
+                <option value="2">high</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="deviceActive">Active</label>
+              <label class="switch">
+                <input id="deviceActive" type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+       
+            <div>
+              <label for="payloadAmount">Payloads</label>   
+              <input id="new_payloadAmount" min="0" name="new_payloudAmount" required type="number" onchange="payloadInputHandler(event);" placeholder="0">
+            </div>
+
+
+            <div id="new_payloads">
+
+            </div>
+
+
+
+            <button id="btnCreateDevice" name="btnCreateDevice" >create Device</button>
+
+
+      </section>
+    </main>
+    <script src="js/main.js"></script>
+  </body>
+</html>
