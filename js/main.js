@@ -2,6 +2,9 @@ var token;
 var serverAddress;
 var devicesData = [];
 
+
+
+// ini
 fetch('../config.json')
     .then(response => response.json())
         .then(data => {
@@ -240,4 +243,74 @@ function generatePayloadEntry(id) {
 
 
     return entry;
+}
+
+
+document.querySelector("#newDeviceForm").onsubmit = function(event) {
+    event.preventDefault();
+    let data = {};
+    data.DEV_ADD = document.querySelector("#new_devadd").value;
+    data.DEV_EUI = document.querySelector("#new_deveui").value;
+    data.APPSKEY = document.querySelector("#new_appskey").value;
+    data.NETSKEY = document.querySelector("#new_netskey").value;
+    data.name = document.querySelector("#new_name").value;
+    data.payloadSize = document.querySelector("#new_payloadAmount").value;
+
+    if(document.querySelector("#deviceActive").value === "on") {
+        data.active = true;
+    } else {
+        data.active = false;
+    }
+
+    data.logLevel = document.querySelector("#new_loglevel").options[document.querySelector("#new_loglevel").selectedIndex].innerHTML;
+
+    
+    data.payloads=  getPayloads();
+
+
+
+    createNewDevice(data)
+
+
+    return false;
+}
+
+function getPayloads() {
+    let payloads = [];
+
+    let payloadsContainer = document.querySelector("#new_payloads").childNodes;
+
+    if(payloadsContainer.length > 0) {
+        for( let i = 1; i < payloadsContainer.length;i++){
+            let ele = payloadsContainer[i];
+            let payload = {};
+
+            
+            payload.type = ele.childNodes[0].childNodes[1].options[ele.childNodes[0].childNodes[1].selectedIndex].innerHTML;
+            payload.startByte = ele.childNodes[1].childNodes[1].value;
+            payload.len = ele.childNodes[2].childNodes[1].value;
+            payload.name = ele.childNodes[3].childNodes[1].value;
+            payloads.push(payload);
+
+        }
+    }
+
+
+    return payloads;
+}
+
+
+
+function createNewDevice(data) {
+    axios.post(serverAddress+"/devices/add",data, {
+        headers: {
+        'Authorization': `Bearer `+token
+        }
+    })
+    .then((res) => {
+        console.log("response: "+ res.data)
+    })
+    .catch((error) => {
+        console.error(error)
+      })
 }

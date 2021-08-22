@@ -42,23 +42,29 @@
 
       <h2>NEW DEVICE</h2>
       <section id="newDevice">
+        <form id="newDeviceForm">
             <div>
-              <label for="textinput1">DEV ADD</label>  
+              <label for="new_name">name</label>  
+              <input id="new_name" name="new_name" type="text" required maxlength="16" placeholder="somename">         
+            </div>
+
+            <div>
+              <label for="new_devadd">DEV ADD</label>  
               <input id="new_devadd" name="new_devadd" type="text" required maxlength="8" placeholder="00000000">         
             </div>
 
             <div>
-              <labelfor="textinput2">DEV EUI</label>  
+              <label for="new_deveui">DEV EUI</label>  
               <input id="new_deveui" name="new_deveui" maxlength="16" required type="text" placeholder="0000000000000000">
             </div>
 
             <div>
-              <labelfor="textinput2">APPSKEY</label>  
+              <label for="new_appskey">APPSKEY</label>  
               <input id="new_appskey" name="new_appskey" maxlength="32" required type="text" placeholder="00000000000000000000000000000000">
             </div>
 
             <div>
-              <labelfor="textinput2">NETSKEY</label>  
+              <label for="new_netskey">NETSKEY</label>  
               <input id="new_netskey" name="new_netskey" maxlength="32" required type="text" placeholder="00000000000000000000000000000000">
             </div>
 
@@ -81,8 +87,8 @@
             </div>
        
             <div>
-              <label for="payloadAmount">Payloads</label>   
-              <input id="new_payloadAmount" min="0" name="new_payloudAmount" required type="number" onchange="payloadInputHandler(event);" placeholder="0">
+              <label for="new_payloadAmount">Payloads</label>   
+              <input value="0" id="new_payloadAmount" min="0" name="new_payloudAmount" required type="number" onchange="payloadInputHandler(event);" placeholder="0">
             </div>
 
 
@@ -92,8 +98,11 @@
 
 
 
-            <button id="btnCreateDevice" name="btnCreateDevice" >create Device</button>
+            <input type="submit" value="create Device" id="btnCreateDevice" name="btnCreateDevice">
 
+            
+
+        </form>
 
       </section>
     </main>
