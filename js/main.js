@@ -249,6 +249,8 @@ function generatePayloadEntry(id) {
 document.querySelector("#newDeviceForm").onsubmit = function(event) {
     event.preventDefault();
     let data = {};
+    data.longitude = document.querySelector("#new_lon").value;
+    data.latitude = document.querySelector("#new_lat").value;
     data.DEV_ADD = document.querySelector("#new_devadd").value;
     data.DEV_EUI = document.querySelector("#new_deveui").value;
     data.APPSKEY = document.querySelector("#new_appskey").value;
